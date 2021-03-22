@@ -1,0 +1,50 @@
+<ActionBar>
+    <Label text="Home"></Label>
+</ActionBar>
+
+<GridLayout rows="auto, *, auto">
+    
+    <StackLayout class="header" row="0">
+        <Label text="{{previsaoTempo?.results.city}}"></Label>
+    </StackLayout>
+
+    <GridLayout row="1" rows="*,auto">
+
+        <GridLayout row="0" rows="*,*" columns="*,*,*">
+            <Label class="previsao-title" row="0" col="0" colSpan="3" text="{{previsaoTempo?.results.description}}"></Label>
+            <StackLayout row="1" col="0">
+                <Label text="Temperatura Atual"></Label>
+                <Label class="previsao-info" col="0" text="{{previsaoTempo?.results.temp}}ºC"></Label>
+            </StackLayout>
+
+            <StackLayout row="1" col="1">
+                <Label text="Humidade do ar"></Label>
+                <Label class="previsao-info" col="1" text="{{previsaoTempo?.results.humidity}} %"></Label>
+            </StackLayout>
+
+            <StackLayout row="1" col="2">
+                <Label text="Velocidade do vento"></Label>
+                <Label class="previsao-info" col="2" text="{{previsaoTempo?.results.wind_speedy}}"></Label>
+            </StackLayout>
+        </GridLayout>
+
+        <StackLayout row="1">
+            <Label text='Previsão para os próximos dias'></Label>
+            <ScrollView orientation="horizontal">
+                <StackLayout orientation="horizontal">
+                    <StackLayout class="card-proximo-dia" *ngFor="let previsao of previsaoTempo?.results.forecast">
+                        <Label text="Dia: {{previsao.date}}"></Label>
+                        <Label text="Min: {{previsao.min}}" color="blue"></Label>
+                        <Label text="Max: {{previsao.max}}" color="darkred"></Label>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+            
+    </GridLayout>
+
+    <StackLayout class="footer" row="2">
+        <Label text="by Dalollio"></Label>
+    </StackLayout>
+    
+</GridLayout>
